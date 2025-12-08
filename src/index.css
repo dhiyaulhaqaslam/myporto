@@ -86,26 +86,6 @@ a {
    background: radial-gradient(circle, rgba(126, 151, 255, 0.3), transparent 62%);
 }
 
-.beam {
-   position: absolute;
-   width: 12px;
-   height: 160%;
-   background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.12), transparent);
-   opacity: 0.35;
-   filter: blur(2px);
-}
-
-.beam-a {
-   left: 18%;
-   top: -20%;
-   animation: sway 12s ease-in-out infinite;
-}
-
-.beam-b {
-   right: 22%;
-   top: -10%;
-   animation: sway 14s ease-in-out infinite reverse;
-}
 
 .nav-shell {
    position: sticky;
@@ -174,6 +154,29 @@ a {
    inset: 0;
    pointer-events: none;
    z-index: -1;
+   overflow: hidden;
+}
+
+.parallax-layer {
+   position: absolute;
+   inset: 0;
+   border-radius: 28px;
+}
+
+.image-layer {
+   background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2000&q=80")
+      center/cover no-repeat;
+   filter: saturate(1.1) contrast(1.05);
+   opacity: 0.16;
+   transform-origin: center;
+}
+
+.blur-layer {
+   background: radial-gradient(circle at 40% 40%, rgba(158, 252, 255, 0.28), transparent 48%),
+      radial-gradient(circle at 70% 60%, rgba(255, 180, 237, 0.24), transparent 45%),
+      radial-gradient(circle at 50% 80%, rgba(126, 151, 255, 0.22), transparent 50%);
+   filter: blur(8px);
+   opacity: 0.8;
 }
 
 .glow {
@@ -181,6 +184,27 @@ a {
    filter: blur(80px);
    opacity: 0.8;
    transition: transform 0.4s ease-out;
+}
+
+.particle-field {
+   position: absolute;
+   inset: 0;
+   pointer-events: none;
+   overflow: hidden;
+}
+
+.particle {
+   position: absolute;
+   border-radius: 999px;
+   background: radial-gradient(circle, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+   opacity: 0.5;
+   animation: float 9s ease-in-out infinite;
+   box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+.particle:nth-child(odd) {
+   animation-duration: 12s;
+   opacity: 0.35;
 }
 
 .glow-1 {
@@ -688,14 +712,14 @@ a {
    }
 }
 
-@keyframes sway {
+@keyframes float {
    0% {
-      transform: rotate(2deg);
+      transform: translate3d(0, 0, 0) scale(1);
    }
    50% {
-      transform: rotate(-3deg);
+      transform: translate3d(0, -16px, 0) scale(1.08);
    }
    100% {
-      transform: rotate(2deg);
+      transform: translate3d(0, 0, 0) scale(1);
    }
 }

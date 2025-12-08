@@ -5,6 +5,13 @@ import useScrollMotion from "../hooks/useScrollMotion";
 export default function Hero() {
    const scrollY = useScrollMotion();
    const [pointer, setPointer] = useState({ x: 50, y: 50 });
+   const particles = [
+      { left: "12%", top: "22%", size: 8, delay: 0 },
+      { left: "24%", top: "68%", size: 10, delay: 1.2 },
+      { left: "48%", top: "30%", size: 12, delay: 0.6 },
+      { left: "66%", top: "18%", size: 9, delay: 1.6 },
+      { left: "78%", top: "54%", size: 11, delay: 0.9 },
+   ];
 
    const handleMove = (event) => {
       const rect = event.currentTarget.getBoundingClientRect();
@@ -21,6 +28,29 @@ export default function Hero() {
          onMouseMove={handleMove}
       >
          <div className="hero-parallax">
+            <div
+               className="parallax-layer image-layer"
+               style={{ transform: `translate3d(0, ${scrollY * 0.18}px, 0)` }}
+            />
+            <div
+               className="parallax-layer blur-layer"
+               style={{ transform: `translate3d(0, ${scrollY * 0.1}px, 0)` }}
+            />
+            <div className="particle-field">
+               {particles.map((p, idx) => (
+                  <div
+                     key={idx}
+                     className="particle"
+                     style={{
+                        left: p.left,
+                        top: p.top,
+                        width: p.size,
+                        height: p.size,
+                        animationDelay: `${p.delay}s`,
+                     }}
+                  />
+               ))}
+            </div>
             <div className="glow glow-1" style={{ transform: `translateY(${scrollY * 0.12}px)` }} />
             <div className="glow glow-2" style={{ transform: `translateY(${scrollY * 0.2}px)` }} />
             <div className="glow glow-3" style={{ transform: `translateY(${scrollY * 0.32}px)` }} />

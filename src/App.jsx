@@ -57,8 +57,6 @@ export default function App() {
       { className: "orb orb-a", factor: -0.05 },
       { className: "orb orb-b", factor: -0.09 },
       { className: "orb orb-c", factor: -0.13 },
-      { className: "beam beam-a", factor: -0.04 },
-      { className: "beam beam-b", factor: -0.07 },
    ];
 
     // PPT-like slide navigation on wheel/keys
