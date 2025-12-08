@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Section from "./components/Section";
@@ -49,6 +49,7 @@ const milestones = [
 
 export default function App() {
    const scrollY = useScrollMotion();
+   const [mouse, setMouse] = useState({ x: 0.5, y: 0.5 });
    const sectionIds = ["home", "about", "project", "process", "contact"];
    const currentIndexRef = useRef(0);
    const lockRef = useRef(false);
@@ -59,8 +60,36 @@ export default function App() {
       { className: "orb orb-c", factor: -0.13 },
    ];
 
+   // Large scenic, filmic parallax stack
+   const globalLayers = useMemo(
+      () => [
+         { className: "global-layer image-back", factor: -0.18, pointer: 32, scale: 1.18, start: 0, end: 1.4 },
+         { className: "global-layer image-mid", factor: -0.12, pointer: 26, scale: 1.12, start: 0.6, end: 2.2 },
+         { className: "global-layer image-front", factor: -0.07, pointer: 20, scale: 1.06, start: 1.4, end: 3.2 },
+         { className: "global-layer tint", factor: -0.04, pointer: 16, scale: 1, start: 0, end: 3.4 },
+         { className: "global-layer grain", factor: -0.02, pointer: 6, scale: 1, start: 0, end: 3.4 },
+      ],
+      []
+   );
+
+   const getLayerOpacity = (progress, start, end) => {
+      const fade = 0.35; // portion of window heights for fade
+      const fadeIn = Math.min(1, Math.max(0, (progress - start) / fade));
+      const fadeOut = Math.min(1, Math.max(0, (end - progress) / fade));
+      return Math.max(0, Math.min(fadeIn, fadeOut));
+   };
+
     // PPT-like slide navigation on wheel/keys
    useEffect(() => {
+      const onMouse = (e) => {
+         setMouse({
+            x: e.clientX / window.innerWidth,
+            y: e.clientY / window.innerHeight,
+         });
+      };
+
+      window.addEventListener("pointermove", onMouse, { passive: true });
+
       const sections = sectionIds
          .map((id) => document.getElementById(id))
          .filter(Boolean);
@@ -122,6 +151,7 @@ export default function App() {
       window.addEventListener("scroll", onScroll, { passive: true });
 
       return () => {
+         window.removeEventListener("pointermove", onMouse);
          window.removeEventListener("wheel", onWheel);
          window.removeEventListener("keydown", onKey);
          window.removeEventListener("scroll", onScroll);
@@ -131,11 +161,27 @@ export default function App() {
    return (
       <div className="page-shell">
          <div className="global-parallax">
+            {globalLayers.map((layer) => (
+               <div
+                  key={layer.className}
+                  className={layer.className}
+                  style={{
+                     transform: `translate3d(${(mouse.x - 0.5) * layer.pointer}px, ${
+                        scrollY * layer.factor
+                     }px, 0) scale(${layer.scale})`,
+                     opacity: getLayerOpacity(scrollY / window.innerHeight, layer.start, layer.end),
+                  }}
+               />
+            ))}
             {parallaxLayers.map((layer) => (
                <div
                   key={layer.className}
                   className={layer.className}
-                  style={{ transform: `translateY(${scrollY * layer.factor}px)` }}
+                  style={{
+                     transform: `translate3d(${(mouse.x - 0.5) * 14}px, ${
+                        scrollY * layer.factor
+                     }px, 0)`,
+                  }}
                />
             ))}
          </div>
