@@ -28,14 +28,6 @@ export default function Hero() {
          onMouseMove={handleMove}
       >
          <div className="hero-parallax">
-            <div
-               className="parallax-layer image-layer"
-               style={{ transform: `translate3d(0, ${scrollY * 0.18}px, 0)` }}
-            />
-            <div
-               className="parallax-layer blur-layer"
-               style={{ transform: `translate3d(0, ${scrollY * 0.1}px, 0)` }}
-            />
             <div className="particle-field">
                {particles.map((p, idx) => (
                   <div

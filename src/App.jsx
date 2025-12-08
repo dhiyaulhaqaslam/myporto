@@ -60,20 +60,18 @@ export default function App() {
       { className: "orb orb-c", factor: -0.13 },
    ];
 
-   // Large scenic, filmic parallax stack
+   // Only 3 parallax image layers
    const globalLayers = useMemo(
       () => [
-         { className: "global-layer image-back", factor: -0.18, pointer: 32, scale: 1.18, start: 0, end: 1.4 },
-         { className: "global-layer image-mid", factor: -0.12, pointer: 26, scale: 1.12, start: 0.6, end: 2.2 },
-         { className: "global-layer image-front", factor: -0.07, pointer: 20, scale: 1.06, start: 1.4, end: 3.2 },
-         { className: "global-layer tint", factor: -0.04, pointer: 16, scale: 1, start: 0, end: 3.4 },
-         { className: "global-layer grain", factor: -0.02, pointer: 6, scale: 1, start: 0, end: 3.4 },
+         { className: "global-layer image-back", factor: -0.18, pointer: 32, scale: 1.18, start: 0, end: 4 },
+         { className: "global-layer image-mid", factor: -0.12, pointer: 26, scale: 1.12, start: 0, end: 4 },
+         { className: "global-layer image-front", factor: -0.07, pointer: 20, scale: 1.06, start: 0, end: 4 },
       ],
       []
    );
 
    const getLayerOpacity = (progress, start, end) => {
-      const fade = 0.35; // portion of window heights for fade
+      const fade = 0.4;
       const fadeIn = Math.min(1, Math.max(0, (progress - start) / fade));
       const fadeOut = Math.min(1, Math.max(0, (end - progress) / fade));
       return Math.max(0, Math.min(fadeIn, fadeOut));
@@ -194,6 +192,7 @@ export default function App() {
                eyebrow="Signature"
                title="Minimal, cinematic, intentionally playful."
                intro="I blend product thinking with motion-led storytelling. Each build leans on clarity first—then adds depth with light, parallax, and tactile interactions."
+               transparent={true}
             >
                <div className="card-grid">
                   {services.map((item) => (
@@ -210,6 +209,7 @@ export default function App() {
                eyebrow="Selected work"
                title="Interfaces with a sense of theatre."
                intro="A few favorites that pair refined visuals with measurable outcomes."
+               transparent={false}
             >
                <div className="project-grid">
                   {projects.map((project) => (
@@ -242,6 +242,7 @@ export default function App() {
                eyebrow="Process"
                title="Calm, collaborative, measurable."
                intro="A steady cadence keeps projects moving while leaving space for exploration."
+               transparent={true}
             >
                <div className="timeline">
                   {milestones.map((step, index) => (
@@ -261,6 +262,7 @@ export default function App() {
                eyebrow="Contact"
                title="Let’s build something vivid."
                intro="Available for select collaborations and product launches."
+               transparent={false}
             >
                <div className="contact-panel">
                   <div>
