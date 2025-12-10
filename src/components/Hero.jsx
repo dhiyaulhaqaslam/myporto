@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import useScrollMotion from "../hooks/useScrollMotion";
+import { Lanyard } from "react-bits";
 
 export default function Hero() {
    const scrollY = useScrollMotion();
@@ -100,29 +101,21 @@ export default function Hero() {
                </div>
 
                <div className="hero-visual">
-                  <div className="visual-card">
-                     <motion.div
-                        className="visual-badge"
-                        animate={{ y: [-6, 8, -4] }}
-                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                     >
-                        Crafted with intention
-                     </motion.div>
-                     <motion.div
-                        className="visual-ring"
-                        animate={{ rotate: [0, 6, -4, 0] }}
-                        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-                     />
-                     <motion.div
-                        className="visual-core"
-                        animate={{ scale: [1, 1.04, 0.98, 1] }}
-                        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                     >
-                        <div className="core-gradient" />
-                        <div className="core-glow" />
-                        <div className="core-dots" />
-                     </motion.div>
-                  </div>
+                  <Lanyard
+                     name="Dhiy Aulhaq"
+                     title="Full Stack Developer & UI/UX Designer"
+                     avatar="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
+                     location="Jakarta, Indonesia"
+                     bio="Passionate full-stack developer with expertise in React, Node.js, and modern web technologies. Creating beautiful, functional digital experiences."
+                     skills={["React", "Node.js", "TypeScript", "MongoDB", "UI/UX Design", "Motion Design"]}
+                     socialLinks={{
+                        github: "https://github.com/dhiyaulhaq",
+                        linkedin: "https://linkedin.com/in/dhiyaulhaq",
+                        twitter: "https://twitter.com/dhiyaulhaq",
+                        email: "dhiyaulhaq@example.com"
+                     }}
+                     theme="dark"
+                  />
                </div>
             </div>
          </div>

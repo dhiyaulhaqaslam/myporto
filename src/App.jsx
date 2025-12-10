@@ -60,21 +60,10 @@ export default function App() {
       { className: "orb orb-c", factor: -0.13 },
    ];
 
-   // Section-specific parallax image layers
+   // Single parallax image
    const globalLayers = useMemo(
       () => [
-         // Hero section layers
-         { className: "global-layer image-back", factor: -0.18, pointer: 32, scale: 1.18, start: 0, end: 1.5 },
-         { className: "global-layer image-mid", factor: -0.12, pointer: 26, scale: 1.12, start: 0, end: 1.5 },
-         { className: "global-layer image-front", factor: -0.07, pointer: 20, scale: 1.06, start: 0, end: 1.5 },
-         // About section layers
-         { className: "global-layer image-back-about", factor: -0.18, pointer: 32, scale: 1.18, start: 1, end: 2.5 },
-         { className: "global-layer image-mid-about", factor: -0.12, pointer: 26, scale: 1.12, start: 1, end: 2.5 },
-         { className: "global-layer image-front-about", factor: -0.07, pointer: 20, scale: 1.06, start: 1, end: 2.5 },
-         // Process section layers
-         { className: "global-layer image-back-process", factor: -0.18, pointer: 32, scale: 1.18, start: 2.5, end: 4 },
-         { className: "global-layer image-mid-process", factor: -0.12, pointer: 26, scale: 1.12, start: 2.5, end: 4 },
-         { className: "global-layer image-front-process", factor: -0.07, pointer: 20, scale: 1.06, start: 2.5, end: 4 },
+         { className: "global-layer image-single", factor: -0.12, pointer: 20, scale: 1.08, start: 0, end: 4 },
       ],
       []
    );
