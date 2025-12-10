@@ -774,3 +774,126 @@ a {
       transform: translate3d(0, 0, 0) scale(1);
    }
 }
+
+/* Lanyard Component Styles */
+.lanyard-card {
+   position: relative;
+   width: min(460px, 100%);
+   padding: 28px;
+   border-radius: 24px;
+   background: linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+   border: 1px solid rgba(255, 255, 255, 0.12);
+   box-shadow: 0 20px 80px rgba(0, 0, 0, 0.35);
+   backdrop-filter: blur(10px);
+   isolation: isolate;
+   overflow: hidden;
+}
+
+.lanyard-header {
+   display: flex;
+   align-items: center;
+   gap: 16px;
+   margin-bottom: 24px;
+}
+
+.lanyard-avatar {
+   width: 60px;
+   height: 60px;
+   border-radius: 50%;
+   overflow: hidden;
+   border: 2px solid rgba(158, 252, 255, 0.3);
+   box-shadow: 0 4px 20px rgba(158, 252, 255, 0.2);
+}
+
+.lanyard-avatar img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+
+.lanyard-info {
+   flex: 1;
+}
+
+.lanyard-name {
+   margin: 0 0 4px 0;
+   font-size: 18px;
+   font-weight: 700;
+   color: var(--text);
+}
+
+.lanyard-title {
+   margin: 0 0 4px 0;
+   font-size: 14px;
+   color: var(--accent);
+   font-weight: 600;
+}
+
+.lanyard-location {
+   margin: 0;
+   font-size: 12px;
+   color: var(--muted);
+}
+
+.lanyard-bio {
+   margin-bottom: 24px;
+}
+
+.lanyard-bio p {
+   margin: 0;
+   color: var(--muted);
+   font-size: 14px;
+   line-height: 1.5;
+}
+
+.lanyard-skills {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 8px;
+   margin-bottom: 24px;
+}
+
+.lanyard-skill {
+   padding: 6px 12px;
+   border-radius: 20px;
+   background: rgba(158, 252, 255, 0.1);
+   border: 1px solid rgba(158, 252, 255, 0.2);
+   color: var(--accent);
+   font-size: 12px;
+   font-weight: 500;
+   transition: all 0.2s ease;
+}
+
+.lanyard-skill:hover {
+   background: rgba(158, 252, 255, 0.15);
+   transform: translateY(-1px);
+}
+
+.lanyard-social {
+   display: flex;
+   gap: 16px;
+   margin-top: 8px;
+}
+
+.lanyard-social-link {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 48px;
+   height: 48px;
+   border-radius: 50%;
+   background: rgba(255, 255, 255, 0.08);
+   border: 1px solid rgba(255, 255, 255, 0.12);
+   color: var(--text);
+   text-decoration: none;
+   font-size: 18px;
+   transition: all 0.2s ease;
+   cursor: pointer;
+}
+
+.lanyard-social-link:hover {
+   background: rgba(158, 252, 255, 0.1);
+   border-color: rgba(158, 252, 255, 0.3);
+   box-shadow: 0 4px 20px rgba(158, 252, 255, 0.2);
+   transform: translateY(-2px);
+}
