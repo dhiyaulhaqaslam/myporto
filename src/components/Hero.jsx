@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import useScrollMotion from "../hooks/useScrollMotion";
-import { Lanyard } from "react-bits";
+import Lanyard from "./Lanyard";
 
 export default function Hero() {
    const scrollY = useScrollMotion();
@@ -114,7 +114,6 @@ export default function Hero() {
                         twitter: "https://twitter.com/dhiyaulhaq",
                         email: "dhiyaulhaq@example.com"
                      }}
-                     theme="dark"
                   />
                </div>
             </div>
